@@ -119,8 +119,8 @@ export const trendingAnime = async (req, res) => {
     }
   }`;  
   const variables = {
-      page: (req.params.page || req.query.page) ?? 1,
-      perPage: (req.params.perPage || req.query.perPage) ?? 15
+      page: (req.params.page || req.query.page) || 1,
+      perPage: (req.params.perPage || req.query.perPage) || 15
   };  
   const data = await makeRequest(query, variables);
 
@@ -200,8 +200,8 @@ export const getResourceById = async (req, res) => {
     }`;
 
   const variables = {
-    id: parseInt(req.params.id) ?? 1,
-    //type : req.body.type ?? "ANIME"
+    id: parseInt(req.params.id) || 1,
+    //type : req.body.type || "ANIME"
   };
 
   const response = await makeRequest(query, variables);
@@ -230,8 +230,8 @@ export const getAnimeByName = async (req, res) => {
     }`;
 
     const variables = {
-      page: (req.params.page || req.query.page) ?? 1,
-      perPage: (req.params.perPage || req.query.perPage) ?? 15,
+      page: (req.params.page || req.query.page) || 1,
+      perPage: (req.params.perPage || req.query.perPage) || 15,
       search: req.params.search || req.query.search 
     }
 
@@ -264,8 +264,8 @@ export const popularThisSeason = async (req, res) => {
   const date = new Date();
 
   const variables = {
-    page: (req.params.page || req.query.page) ?? 1,
-    perPage: (req.params.perPage || req.query.perPage) ?? 15,
+    page: (req.params.page || req.query.page) || 1,
+    perPage: (req.params.perPage || req.query.perPage) || 15,
     season: dateTools.getSeasonFromDate(date), // FALL, SPRING, WINTER, SUMMER
     year: dateTools.getSeasonYearFromDate(date, false)
   };
@@ -298,8 +298,8 @@ export const upcomingNextSeason = async (req, res) => {
   const date = new Date();
 
   const variables = {
-    page: (req.params.page || req.query.page) ?? 1,
-    perPage: (req.params.perPage || req.query.perPage) ?? 15,
+    page: (req.params.page || req.query.page) || 1,
+    perPage: (req.params.perPage || req.query.perPage) || 15,
     season: dateTools.getNextSeasonFromDate(date), // next season
     year: dateTools.getSeasonYearFromDate(date, true) // if winter, add one year
   };
@@ -331,8 +331,8 @@ export const allTimePopular = async (req, res) => {
     }`;
     
   const variables = {
-    page: (req.params.page || req.query.page) ?? 1,
-    perPage: (req.params.perPage || req.query.perPage) ?? 15,
+    page: (req.params.page || req.query.page) || 1,
+    perPage: (req.params.perPage || req.query.perPage) || 15,
   };
   
   const data = await makeRequest(query, variables);
@@ -362,8 +362,8 @@ export const getAnimeByCategoryTag = async (req, res) => {
   `;
 
   const variables = {
-    page: req.body.page ?? 1,
-    perPage: req.body.perPage ??	10,
+    page: req.body.page || 1,
+    perPage: req.body.perPage ||	10,
     categories: req.body.categories,
     tags: req.body.tags
   }
@@ -398,7 +398,7 @@ export const getAnimesById = async (req, res) => {
   for(let i = 0; i < ids.length; i++) {  
     const variables = {
       id: ids[i]
-      //type : req.body.type ?? "ANIME"
+      //type : req.body.type || "ANIME"
     };
   
     const response = await makeRequest(query, variables);
