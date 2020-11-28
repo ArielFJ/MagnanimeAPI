@@ -58,8 +58,8 @@ export const all = async (req, res) => {
     }`;
 
   const variables = {
-    page: (req.params.page || req.query.page) ?? 1,
-    perPage: (req.params.perPage || req.query.perPage) ?? 15
+    page: (req.params.page || req.query.page) || 1,
+    perPage: (req.params.perPage || req.query.perPage) || 15
   };
 
   const data = await makeRequest(query, variables);  
@@ -89,8 +89,8 @@ export const lastUpdatedAnimes = async (req, res) => {
     }`;
 
     const variables = {
-      page: (req.params.page || req.query.page) ?? 1,
-      perPage: (req.params.perPage || req.query.perPage) ?? 15
+      page: (req.params.page || req.query.page) || 1,
+      perPage: (req.params.perPage || req.query.perPage) || 15
     };
 
     const data = await makeRequest(query, variables);
