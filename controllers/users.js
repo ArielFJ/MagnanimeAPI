@@ -34,8 +34,8 @@ export const logUser = async (req, res) => {
 
 export const createUser = async (req, res) => {
   const body = req.body;  
-  const userExists = User.findOne({username: body.username});
-
+  const userExists = await User.findOne({username: body.username});
+  
   if(userExists) {    
     return res.status(400).json({message: "Username not available"});
   }
