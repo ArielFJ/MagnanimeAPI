@@ -9,7 +9,7 @@ router.get('/login/:username/:password', usersController.logUser);
 router.post('/',  usersController.createUser);
 
 router.patch('/:id', usersController.updateUser);
-router.patch('/like/:userId/:animeId', usersController.likeAnime)
+router.patch('/like/:userId/:animeId/:update', usersController.likeAnime)
 
 router.delete('/:id', usersController.deleteUser);
 

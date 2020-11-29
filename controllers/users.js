@@ -72,15 +72,16 @@ export const deleteUser = async (req, res) => {
 }
 
 export const likeAnime = async (req, res) => {
-  const {userId: _id, animeId } = req.params;
+  const {userId: _id, animeId, update } = req.params;
   const anime = Number(animeId);
+  const confirmUpdate = Number(update);
 
   if(!mongoose.Types.ObjectId.isValid(_id)) res.status(404).send('No user with that id');
 
   const user = await User.findById(_id);
 
   let newFavs = [...user.favs];
-  if(!newFavs.includes(anime)){
+  if(confirmUpdate === 1){
     newFavs.push(anime);
   }
   else{
