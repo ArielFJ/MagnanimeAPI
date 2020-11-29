@@ -214,7 +214,7 @@ export const getAnimeByName = async (req, res) => {
   const query = `
     query ($page: Int, $perPage: Int, $search: String) {  
       Page(page: $page, perPage: $perPage) {
-        media (search: $search, sort: POPULARITY_DESC) {
+        media (search: $search, sort: POPULARITY_DESC, type: ANIME) {
           id
           type
           title {
