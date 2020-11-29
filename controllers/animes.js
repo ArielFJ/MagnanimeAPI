@@ -237,7 +237,7 @@ export const getAnimeByName = async (req, res) => {
 
     const data = await makeRequest(query, variables);
 
-    res.send(data);
+    res.send(data.data.Page.media);
 }
 
 // DONE
